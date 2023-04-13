@@ -28,6 +28,8 @@ module CarrierWave
       alias to_file file
 
       def attributes
+        Rails.logger.info "gggggggg"
+
         file.data.to_h
       end
 
@@ -44,7 +46,6 @@ module CarrierWave
 
       def read
         read_options = aws_options.read_options
-        Rails.logger.info "2222222222"
         if block_given?
           file.get(read_options) { |chunk| yield chunk }
           nil
@@ -54,8 +55,6 @@ module CarrierWave
       end
 
       def store(new_file)
-        Rails.logger.info "uuuuuuuuu"
-
         if new_file.is_a?(self.class)
           new_file.move_to(path)
         else
