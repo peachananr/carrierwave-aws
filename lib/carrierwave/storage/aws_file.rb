@@ -44,6 +44,8 @@ module CarrierWave
 
       def read
         read_options = aws_options.read_options
+        Rails.logger.info "xxxxxxxxxxx"
+
         if block_given?
           file.get(read_options) { |chunk| yield chunk }
           nil
@@ -84,8 +86,6 @@ module CarrierWave
 
       def public_url
         if uploader.asset_host
-          Rails.logger.info "xxxxxxxxxxx #{uploader.asset_host}/#{uri_path}"
-
           "#{uploader.asset_host}/#{uri_path}"
         else
           file.public_url.to_s
