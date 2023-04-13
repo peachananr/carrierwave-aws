@@ -84,8 +84,9 @@ module CarrierWave
       end
 
       def public_url
-        Rails.logger.info "xxxxxxxxxxx #{file.public_url.to_s}"
+        Rails.logger.info "xxxxxxxxxxx #{file.inspect}"
         if uploader.asset_host
+          Rails.logger.info "yyyyyyyyy #{uploader.inspect}"
           "#{uploader.asset_host}/#{uri_path}"
         else
           file.public_url.to_s
