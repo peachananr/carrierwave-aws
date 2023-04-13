@@ -16,13 +16,13 @@ module CarrierWave
       end
 
       def file
-        Rails.logger.info "#{bucket.object(path)}"
+        Rails.logger.info "uuuuuuuuuu #{bucket.object(path)}"
 
         @file ||= bucket.object(path)
       end
 
       def size
-        Rails.logger.info "wwwqqwwww"
+        Rails.logger.info "ppppppppp #{file.inspect}"
 
         file.size
       rescue Aws::S3::Errors::NotFound
