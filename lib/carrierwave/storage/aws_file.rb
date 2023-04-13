@@ -44,7 +44,6 @@ module CarrierWave
 
       def read
         read_options = aws_options.read_options
-        Rails.logger.info "xxxxxxxxxxx"
 
         if block_given?
           file.get(read_options) { |chunk| yield chunk }
