@@ -16,10 +16,14 @@ module CarrierWave
       end
 
       def file
+        Rails.logger.info "gggggggg"
+
         @file ||= bucket.object(path)
       end
 
       def size
+        Rails.logger.info "wwwqqwwww"
+
         file.size
       rescue Aws::S3::Errors::NotFound
         nil
@@ -28,7 +32,6 @@ module CarrierWave
       alias to_file file
 
       def attributes
-        Rails.logger.info "gggggggg"
 
         file.data.to_h
       end
