@@ -16,8 +16,6 @@ module CarrierWave
       end
 
       def file
-        Rails.logger.info "xxxxxxxxxxx #{bucket.object(path)}"
-
         @file ||= bucket.object(path)
       end
 
@@ -86,6 +84,7 @@ module CarrierWave
       end
 
       def public_url
+        Rails.logger.info "xxxxxxxxxxx #{file.public_url.to_s}"
         if uploader.asset_host
           "#{uploader.asset_host}/#{uri_path}"
         else
