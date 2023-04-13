@@ -20,8 +20,6 @@ module CarrierWave
       end
 
       def retrieve!(identifier)
-        Rails.logger.info "xxxxxxxxxxx #{uploader.store_path(identifier)}"
-
         AWSFile.new(uploader, connection, uploader.store_path(identifier))
       end
 

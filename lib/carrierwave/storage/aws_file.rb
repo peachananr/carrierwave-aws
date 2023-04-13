@@ -16,6 +16,8 @@ module CarrierWave
       end
 
       def file
+        Rails.logger.info "xxxxxxxxxxx #{bucket.object(path)}"
+
         @file ||= bucket.object(path)
       end
 
