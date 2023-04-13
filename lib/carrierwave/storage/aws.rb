@@ -14,15 +14,13 @@ module CarrierWave
       end
 
       def store!(file)
-        Rails.logger.info "yyyyyyyyyyyy"
-
         AWSFile.new(uploader, connection, uploader.store_path).tap do |aws_file|
           aws_file.store(file)
         end
       end
 
       def retrieve!(identifier)
-        Rails.logger.info "xxxxxxxxxxx"
+        Rails.logger.info "xxxxxxxxxxx #{uploader.store_path(identifier)}"
 
         AWSFile.new(uploader, connection, uploader.store_path(identifier))
       end
@@ -34,8 +32,6 @@ module CarrierWave
       end
 
       def retrieve_from_cache!(identifier)
-        Rails.logger.info "wwwwwwwww"
-
         AWSFile.new(uploader, connection, uploader.cache_path(identifier))
       end
 
